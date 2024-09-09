@@ -74,6 +74,7 @@ ggplot() +
   geom_sf(data = geojson_data, fill = "white", color = "black") +  # Use black and white
   theme_void()  # Remove background, gridlines, etc
 
+
 ```
 
 Cleaning data
@@ -81,7 +82,32 @@ Cleaning data
 ```{r echo = FALSE}
 # Task 6: Read the CSV file
 population_data <- read.csv("~/Desktop/nz_territory_2016_population.csv")
+
 # Rename columns for clarity
 colnames(population_data) <- c("nz_territory", "population", "population_change_number", "population_change_percent")
+
+# Remove unnecessary columns
+population_data <- population_data[, c("nz_territory", "population")]
+
+# Check for missing or duplicated values
+population_data <- population_data[!is.na(population_data$population), ]
+population_data <- population_data[!duplicated(population_data), ]
+
+# Explore the distribution
+hist(log(population_data$population), main = "Log-Transformed Population Distribution",
+     xlab = "Log Population", col = "blue")
+```
+
+**Merge geospatial and numeric data**
+
+```{r echo = FALSE}
+# Task 7: Merge geospatial and population data
+nz_map_data <- left_join(geojson_data, population_data, by = c("TA2016_NAM" = "nz_territory"))
+
+```
+
+**Make basic choropleth**
+
+```{r}
 
 ```
