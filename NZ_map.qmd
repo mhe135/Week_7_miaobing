@@ -44,6 +44,8 @@ NZ_map_pop
 
 ```
 
+Heat Map
+
 ```{r echo=FALSE,warning=FALSE}
 # Task 3: Create a heatmap showing population density using the actual data
 NZ_map_heatmap <- leaflet(NZ_pop) %>%
@@ -55,7 +57,13 @@ NZ_map_heatmap
 
 ```
 
-```{}
+				
+
+**Read a .geoJSON file**
+
+```{r echo=FALSE,warning=FALS}
+# Task 4: Read a .geoJSON file
+geojson_data <- st_read("~/Desktop/nz_ta.geojson")
 ```
 
 ```{r echo=FALSE,warning=FALSE}
