@@ -17,7 +17,7 @@ library(viridis)
 Basic New Zealand Map
 
 ```{r echo=FALSE,warning=FALSE}
-# Creating a New Zealand map
+# Task 1: Creating a New Zealand map
 NZ_map <- leaflet() %>%
 addTiles() %>%
 setView(lng = 176.87080273943093, lat = -41.141089622379005, zoom = 5)
@@ -28,7 +28,7 @@ NZ_map
 Add Markers
 
 ```{r echo=FALSE,warning=FALSE}
-# Create New Zealand map dataset
+# Task 2: Create New Zealand map dataset
 NZ_pop <- data.frame(
 city = c("Auckland", "Wellington", "Christchurch"),
 lat = c(-36.852095, -41.2887953, -43.530955), lng = c(174.7631803, 174.7772114, 172.6364343), population = c(1614300, 207900, 375000))
@@ -44,12 +44,21 @@ NZ_map_pop
 
 ```
 
-```{r}
-# Create a heatmap showing population density using the actual data
+```{r echo=FALSE,warning=FALSE}
+# Task 3: Create a heatmap showing population density using the actual data
 NZ_map_heatmap <- leaflet(NZ_pop) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%  # Use the same readable tile
-  addHeatmap(lng = ~lng, lat = ~lat, intensity = ~population)
+  addHeatmap(lng = ~lng, lat = ~lat, intensity = ~population) %>% addProviderTiles("OpenStreetMap.HOT")
 
 # Display the heatmap
 NZ_map_heatmap
+
+```
+
+```{}
+```
+
+```{r echo=FALSE,warning=FALSE}
+
+
 ```
