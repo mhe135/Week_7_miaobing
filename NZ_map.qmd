@@ -61,12 +61,27 @@ NZ_map_heatmap
 
 **Read a .geoJSON file**
 
-```{r echo=FALSE,warning=FALS}
+```{r echo=FALSE,warning=FALSE}
 # Task 4: Read a .geoJSON file
 geojson_data <- st_read("~/Desktop/nz_ta.geojson")
 ```
 
-```{r echo=FALSE,warning=FALSE}
+**Create a black and white plot with regions**
 
+```{r echo=FALSE,warning=FALSE}
+# Task: Create black and white plot of the regions
+ggplot() +
+  geom_sf(data = geojson_data, fill = "white", color = "black") +  # Use black and white
+  theme_void()  # Remove background, gridlines, etc
+
+```
+
+Cleaning data
+
+```{r echo = FALSE}
+# Task 6: Read the CSV file
+population_data <- read.csv("~/Desktop/nz_territory_2016_population.csv")
+# Rename columns for clarity
+colnames(population_data) <- c("nz_territory", "population", "population_change_number", "population_change_percent")
 
 ```
