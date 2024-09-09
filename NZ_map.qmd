@@ -11,6 +11,7 @@ library(sf)
 library(ggplot2)
 library(dplyr)
 library(viridis)
+
 ```
 
 Basic New Zealand Map
@@ -30,7 +31,7 @@ Add Markers
 # Create New Zealand map dataset
 NZ_pop <- data.frame(
 city = c("Auckland", "Wellington", "Christchurch"),
-lat = c(-36.852095, -41.2887953, -43.530955), lng = c(174.7631803, 174.7772114, 172.6364343), population = c(1693000, 424000, 407503))
+lat = c(-36.852095, -41.2887953, -43.530955), lng = c(174.7631803, 174.7772114, 172.6364343), population = c(1614300, 207900, 375000))
 
 # Create New Zealand map with marers
 NZ_map_pop <- leaflet(NZ_pop) %>%
@@ -41,6 +42,9 @@ addMarkers(~lng, ~lat, popup = ~paste(city, "<br>Population:", population))
 # Display the map with markers
 NZ_map_pop
 
+```
+
+```{r}
 # Create a heatmap showing population density using the actual data
 NZ_map_heatmap <- leaflet(NZ_pop) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%  # Use the same readable tile
@@ -48,5 +52,4 @@ NZ_map_heatmap <- leaflet(NZ_pop) %>%
 
 # Display the heatmap
 NZ_map_heatmap
-
 ```
